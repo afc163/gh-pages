@@ -12,10 +12,13 @@ program
       'pattern used to select which files should be published', '**/*')
   .option('-b, --branch <branch>',
       'name of the branch you\'ll be pushing to', 'gh-pages')
+  .option('-c, --clone <clone>',
+      'name of the cache directory you\'ll be cloning to', undefined)
   .parse(process.argv);
 
 ghpages.publish(path.join(process.cwd(), program.dist), {
   branch: program.branch,
+  clone: program.clone,
   src: program.src,
   logger: function(message) {
     console.log(message);
